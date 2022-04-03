@@ -1,29 +1,24 @@
 <div class="row">
     <div class="col-xs-12 col-sm-6 col-md-4" *ngFor="let character of characters" >        
-        <div class="card" >
-            <div class="card text-white bg-success card border-success" style="max-width: 30rem;" >
-                <div class="card-header">{{character.species}}</div>                
+        <div class="card w-60 shadow p-3 mb-5 bg-body rounded" >
+            <div class="card text-white bg-secondary " style="max-width: 30rem;" >
+                <div class="card-header">{{character.status}}</div>                
                 <div class="card-body">
-                  <h5 class="card-title">{{character.name}}</h5>
-                  <button (click)="goToCharacterDetail(characters)" class="col-lg-8 character-image">
+                  <h5 class="card-title text-uppercase">{{character.name}}</h5>
+                  <button (click)="goToCharacterDetail(characters)" >
                     <img  src="{{character.image}}" class="card-img-top" [alt]="character.name">
                     <a routerLink="/character-details, {{character.id}}" ></a>
                   </button>
 
                   <div class='moreInfo'>
-                    <div class='status'>
-                      Status: <span class='big'> {{character.status}} </span>
+                    <div class='species'>
+                      Species: <span class='big'> {{character.species}} </span>
                     </div>
-                    <div class="location">
-                      <p>Last known location:
-                        <a mat-button color="primary" [routerLink]="['/location', character.locationId]">{{ character.location.name }}</a>
+                    <div class="text-primary">
+                      <p class="fs-5">
+                        <a class="text-decoration-none" [routerLink]="['/location', character.locationId]">Location</a>
                       </p>
                     </div>
-                    <div class="episode">
-                        <p>First seen in:
-                            <a mat-button color="primary" [routerLink]="['/episode', character.episodeId]">{{ character.episode.created}}</a>
-                          </p>
-                      </div>
                   </div>
                 </div>
               </div>
