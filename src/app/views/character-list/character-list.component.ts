@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute, Router } from '@angular/router';
-//import { Character } from 'src/app/models/character.interface';
+import { ActivatedRoute, ParamMap, Router } from '@angular/router';
+import { Character } from 'src/app/models/character.interface';
 import { ApiService } from 'src/app/services/api/api.service';
 
 
@@ -11,13 +11,15 @@ import { ApiService } from 'src/app/services/api/api.service';
 })
 export class CharacterListComponent implements OnInit {
  characters: any;
-// characters!: Character
+ 
+  constructor(private api: ApiService, private route: ActivatedRoute, private router: Router) {
 
-  constructor(private api: ApiService, private route: ActivatedRoute, private router: Router) { }
+   }
 
   ngOnInit(): void {
     // this.getApi()
     this.getCharacter()
+   
   }
 
   // getApi(){
@@ -27,6 +29,7 @@ export class CharacterListComponent implements OnInit {
   //   })
   // }
 
+
   getCharacter(){
     this.api.getCharacter().subscribe((data: any )=>{
       console.log('esta es la data', data.results);
@@ -34,4 +37,11 @@ export class CharacterListComponent implements OnInit {
     })
   }
   
+  goToCharacterDetail(characterId: number){
+      console.log("Character Detail:", this.goToCharacterDetail)
+    this.router.navigate(['/character-details', characterId]);
+  
+  }
+
+ 
 }

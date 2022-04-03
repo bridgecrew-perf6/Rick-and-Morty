@@ -1,1 +1,42 @@
-<p>character-details works!</p>
+<div class="card mb-3" style="max-width: 540px;" *ngFor="let character of characters">
+    <div class="row g-0">
+      <div class="col-md-4">
+        <img src="{{character.image}}" class="img-fluid rounded-start" alt="character.name">
+      </div>
+      <div class="col-md-8">
+        <div class="card-body">
+          <h5 class="card-title">{{character.name}}</h5>
+          <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+          <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+
+<!-- <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+    <div class="modal-content" style="width: 60vw;" *ngFor="let character of characters">
+        <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">{{character.title}}</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body" class="d-flex">
+            <img style="margin:1em" src="{{character.image}}" class="card-img-top" [alt]="character.name">
+        <div class="card-text" style ="margin: 1em; text-align: justify;">
+            <p>Character Info</p> 
+            <p class="card-text"><small class="text-muted">{{ character.created }}</small></p>
+            <p>Status: {{ character.status}}</p> 
+            <p>Gender: {{ character.gender}}</p> 
+            <p>Species: {{ character.species}}</p> 
+            <p>Origin: {{ character.origin}}</p>
+        </div>
+        </div>
+        <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Add favorite</button>
+
+        </div>
+    </div>
+    </div>
+</div>  -->

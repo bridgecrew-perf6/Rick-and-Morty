@@ -11,6 +11,10 @@ import { CharacterListComponent } from './views/character-list/character-list.co
 import { CharacterDetailsComponent } from './views/character-details/character-details.component';
 
 import { HttpClientModule } from '@angular/common/http';
+import { LocationComponent } from './views/location/location.component';
+import { EpisodeComponent } from './views/episode/episode.component';
+
+
 
 
 @NgModule({
@@ -21,12 +25,16 @@ import { HttpClientModule } from '@angular/common/http';
     FormSearchComponent,
     HomeComponent,
     CharacterListComponent,
-    CharacterDetailsComponent
+    CharacterDetailsComponent,
+    LocationComponent,
+    EpisodeComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    HttpClientModule
+    HttpClientModule,
+
+
   ],
   providers: [],
   bootstrap: [AppComponent]

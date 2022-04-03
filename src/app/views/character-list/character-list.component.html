@@ -1,42 +1,33 @@
 <div class="row">
-    <div class="col-xs-12 col-sm-6 col-md-4 " *ngFor="let character of characters" >        
+    <div class="col-xs-12 col-sm-6 col-md-4" *ngFor="let character of characters" >        
         <div class="card" >
-            <div class="card text-white bg-dark card border-success mb-3" >
+            <div class="card text-white bg-success card border-success" style="max-width: 30rem;" >
                 <div class="card-header">{{character.species}}</div>                
                 <div class="card-body">
                   <h5 class="card-title">{{character.name}}</h5>
-                  <img  src="{{character.image}}" class="card-img-top" [alt]=" ">
-                  <a routerLink="/character-details" ></a>
+                  <button (click)="goToCharacterDetail(characters)" class="col-lg-8 character-image">
+                    <img  src="{{character.image}}" class="card-img-top" [alt]="character.name">
+                    <a routerLink="/character-details, {{character.id}}" ></a>
+                  </button>
+
                   <div class='moreInfo'>
                     <div class='status'>
                       Status: <span class='big'> {{character.status}} </span>
                     </div>
-                    <!-- <div class='location'>Location: {{character.location}}</div>
-                    <div class='popularity'>Episodio: {{character.episode}}</div> -->
+                    <div class="location">
+                      <p>Last known location:
+                        <a mat-button color="primary" [routerLink]="['/location', character.locationId]">{{ character.location.name }}</a>
+                      </p>
+                    </div>
+                    <div class="episode">
+                        <p>First seen in:
+                            <a mat-button color="primary" [routerLink]="['/episode', character.episodeId]">{{ character.episode.created}}</a>
+                          </p>
+                      </div>
                   </div>
-
-                  <!-- <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p> -->
                 </div>
               </div>
-            <!-- <h2>{{character.name}} </h2>
-            <div class="image">
-                <a routerLink="'/character-details', character.id">Link
-                    <img src="{character.name}" alt="character.name" class="card-img-top">
-                </a>
-            </div> -->
-            <!-- <div class="card-inner">
-                <div class="header">
-                    <a [routerLink]="['/character-details', character.id]">
-                        <h2>character.name</h2>
-                    </a>
-                    <h4 class="text-muted">character.gender</h4>
-                    <small class="text-mutes">character.created</small>
-                </div>
-            </div> -->
         </div>
     </div>
-    <!-- <div class="col-xs-12 col-sm-12 col-md-12 mt-5 container-notFound">
-        <p>No results .....</p>
-    </div>
-    <button class="btn btn-dark"></button> -->
 </div>
+

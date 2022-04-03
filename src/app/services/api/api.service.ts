@@ -30,5 +30,13 @@ export class ApiService {
   //   return this.http.get<Character>(`${environment.urlBaseApi}/${id}`)
   // }
 
+  getLocation(){
+    return this.http.get<Character>(`${environment.urlBaseApi+"/location"}`)
+  }
+
+  getEpisode(){
+    return this.http.get<Character>(`${environment.urlBaseApi+"/episode"}`)
+  }
+
   
 }

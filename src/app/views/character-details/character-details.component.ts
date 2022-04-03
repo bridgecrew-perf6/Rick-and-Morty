@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
-import { take, tap } from 'rxjs';
+import { ActivatedRoute, Router } from '@angular/router';
+import { ApiService } from 'src/app/services/api/api.service';
+
 
 @Component({
   selector: 'app-character-details',
@@ -8,15 +9,21 @@ import { take, tap } from 'rxjs';
   styleUrls: ['./character-details.component.css']
 })
 export class CharacterDetailsComponent implements OnInit {
+  characters:any;
+  
 
-  constructor(private route: ActivatedRoute) { 
-    this.route.params.pipe(
-      take(1),
-      tap(params=> console.log("estos son los parametros",params))
-    ).subscribe()
+  constructor(private api: ApiService, private route: ActivatedRoute, private router: Router) { 
+
   }
   
   ngOnInit(): void {
+    this.getCharacter()
+  }
+
+  getCharacter(){
+    this.api.getCharacter().subscribe((data: any )=>{
+      this.characters = data.results
+    })
   }
 
 }
