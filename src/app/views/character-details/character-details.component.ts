@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ApiService } from 'src/app/services/api/api.service';
+import { ICharacter} from 'src/app/models/character.interface';
+
 
 
 @Component({
@@ -9,21 +11,26 @@ import { ApiService } from 'src/app/services/api/api.service';
   styleUrls: ['./character-details.component.css']
 })
 export class CharacterDetailsComponent implements OnInit {
-  characters:any;
+//  characters!: ICharacter;
+character?: ICharacter
   
 
-  constructor(private api: ApiService, private route: ActivatedRoute, private router: Router) { 
-
-  }
+  constructor(
+    private apiService: ApiService, 
+    private route: ActivatedRoute, 
+    ) {
+   
+    }
   
   ngOnInit(): void {
     this.getCharacter()
   }
 
-  getCharacter(){
-    this.api.getCharacter().subscribe((data: any )=>{
-      this.characters = data.results
-    })
+  getCharacter(): void {
+    const id = +this.route.snapshot.paramMap.getAll('id')
+    this.apiService.getCharacter(id)
+      .subscribe(character => this.character = character)
+
   }
 
 }

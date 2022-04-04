@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, ParamMap, Router } from '@angular/router';
-import { Character } from 'src/app/models/character.interface';
+import { ICharacter,} from 'src/app/models/character.interface';
 import { ApiService } from 'src/app/services/api/api.service';
+
+
 
 
 @Component({
@@ -10,15 +12,18 @@ import { ApiService } from 'src/app/services/api/api.service';
   styleUrls: ['./character-list.component.css']
 })
 export class CharacterListComponent implements OnInit {
- characters: any;
+  characters: ICharacter[] = []
+  page?: number =0
  
-  constructor(private api: ApiService, private route: ActivatedRoute, private router: Router) {
+  constructor(
+    private apiService: ApiService, 
+    private route: ActivatedRoute, 
+    private router: Router) {
 
    }
 
   ngOnInit(): void {
-    // this.getApi()
-    this.getCharacter()
+    this.getCharacters()
    
   }
 
@@ -29,19 +34,16 @@ export class CharacterListComponent implements OnInit {
   //   })
   // }
 
-
-  getCharacter(){
-    this.api.getCharacter().subscribe((data: any )=>{
-      console.log('esta es la data', data.results);
-      this.characters = data.results
-    })
-  }
-  
-  goToCharacterDetail(characterId: number){
-      console.log("Character Detail:", this.goToCharacterDetail)
-    this.router.navigate(['/character-details', characterId]);
-  
+  getCharacters(): void {
+    this.apiService.getCharacters().subscribe(characters =>      
+      this.characters = characters.results)
   }
 
- 
+  // getLocations(): void {
+  //   this.apiService.getLocations().subscribe(location =>
+  //     this.locations = locations.results)
+  // }
+  
+
+
 }

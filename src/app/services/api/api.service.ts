@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { environment } from 'src/environments/environment';
-import { Character} from '../../models/character.interface'
+import { ICharacter, ICharacters} from '../../models/character.interface'
+import { ILocation, ILocations } from 'src/app/models/location';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
 //import { Api } from 'src/app/models/api.interface';
@@ -13,30 +14,30 @@ export class ApiService {
  
   constructor(private http: HttpClient) { }
 
-  // getCharacter(id?:number): Observable<Character>{
-  //   this.Url=`${environment.urlBaseApi}/${id}`;
-  //   const character = this.http.get<Character>(this.Url);
-  //   return character
-  // }
-  getApi(){
-    return this.http.get<Character>(`${environment.urlBaseApi}`)
+  getCharacters(): Observable<ICharacters>{
+    this.Url=`${environment.urlBaseApi+"/character"}`
+    const character = this.http.get<ICharacters>(this.Url);
+    return character
   }
 
-  getCharacter(){
-    return this.http.get<Character>(`${environment.urlBaseApi+"/character"}`)
+ 
+  getCharacter(characterId: number): Observable<ICharacter> {
+    const url = environment.urlBaseApi + `/character/${characterId}`;
+    return this.http.get<ICharacter>(url);
   }
 
-  // getDetails(id:number){
-  //   return this.http.get<Character>(`${environment.urlBaseApi}/${id}`)
-  // }
+getLocations(): Observable<ILocations>{
+  this.Url=`${environment.urlBaseApi+"/location"}`
+  const location = this.http.get<ILocations>(this.Url)
+  return location
+}
 
-  getLocation(){
-    return this.http.get<Character>(`${environment.urlBaseApi+"/location"}`)
-  }
+  getLocation(locationId: number): Observable<ILocation>{
+    const url = environment.urlBaseApi + `/character/${locationId}`;
+    return this.http.get<ILocation>(url);
+  } 
 
-  getEpisode(){
-    return this.http.get<Character>(`${environment.urlBaseApi+"/episode"}`)
-  }
+
 
   
 }

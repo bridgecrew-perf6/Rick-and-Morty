@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import { NgxPaginationModule } from 'ngx-pagination';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -12,7 +13,6 @@ import { CharacterDetailsComponent } from './views/character-details/character-d
 
 import { HttpClientModule } from '@angular/common/http';
 import { LocationComponent } from './views/location/location.component';
-import { EpisodeComponent } from './views/episode/episode.component';
 import { SectionVideoComponent } from './components/section-video/section-video.component';
 
 
@@ -28,13 +28,13 @@ import { SectionVideoComponent } from './components/section-video/section-video.
     CharacterListComponent,
     CharacterDetailsComponent,
     LocationComponent,
-    EpisodeComponent,
     SectionVideoComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
+    NgxPaginationModule
 
 
   ],

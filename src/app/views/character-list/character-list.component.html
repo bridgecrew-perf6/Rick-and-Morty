@@ -1,22 +1,28 @@
 <div class="row">
-    <div class="col-xs-12 col-sm-6 col-md-4" *ngFor="let character of characters" >        
+    <div class="col-xs-12 col-sm-6 col-md-4" *ngFor="let character of characters " >        
         <div class="card w-60 shadow p-3 mb-5 bg-body rounded" >
             <div class="card text-white bg-secondary " style="max-width: 30rem;" >
                 <div class="card-header">{{character.status}}</div>                
                 <div class="card-body">
                   <h5 class="card-title text-uppercase">{{character.name}}</h5>
-                  <button (click)="goToCharacterDetail(characters)" >
-                    <img  src="{{character.image}}" class="card-img-top" [alt]="character.name">
-                    <a routerLink="/character-details, {{character.id}}" ></a>
-                  </button>
-
+                  <div>
+                    <a routerLink="/character-details/{{character.id}}">
+                      <div class="module character">
+                        <img  src="{{character.image}}" class="card-img-top" [alt]="character.name">
+                      </div>
+                    </a>                    
+                  </div>
                   <div class='moreInfo'>
                     <div class='species'>
                       Species: <span class='big'> {{character.species}} </span>
                     </div>
                     <div class="text-primary">
                       <p class="fs-5">
-                        <a class="text-decoration-none" [routerLink]="['/location', character.locationId]">Location</a>
+                        <a class="text-decoration-none" routerLink="/location">Location
+                          <!-- <div class="module location">
+                            <h4>{{character.location}}</h4>
+                          </div> -->
+                        </a>
                       </p>
                     </div>
                   </div>
@@ -25,4 +31,20 @@
         </div>
     </div>
 </div>
+
+
+
+<nav aria-label="Page navigation example">
+  <ul class="pagination justify-content-center">
+    <li class="page-item disabled">
+      <a class="page-link" href="#" tabindex="-1" aria-disabled="true">Previous</a>
+    </li>
+    <li class="page-item"><a class="page-link" href="#">1</a></li>
+    <li class="page-item"><a class="page-link" href="#">2</a></li>
+    <li class="page-item"><a class="page-link" href="#">3</a></li>
+    <li class="page-item">
+      <a class="page-link" href="#">Next</a>
+    </li>
+  </ul>
+</nav>
 

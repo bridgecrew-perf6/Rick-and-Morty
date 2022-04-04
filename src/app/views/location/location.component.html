@@ -1,1 +1,19 @@
-<p>location works!</p>
+<div class="row">
+    <div class="col-xs-12 col-sm-6 col-md-4" *ngFor="let location of locations " >        
+        <div class="card w-60 shadow p-3 mb-5 bg-body rounded" >
+            <div class="card text-white bg-secondary " style="max-width: 30rem;" >
+                <div class="card-header">{{location.name}}</div>                
+                <div class="card-body">
+                  <h5 class="card-title text-uppercase">{{location.type}}</h5>
+                  <div class='moreInfo'>
+                    <div class='dimension'>
+                      dimension: <span class='big'> {{location.dimension}} </span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+        </div>
+    </div>
+</div>
+
+
