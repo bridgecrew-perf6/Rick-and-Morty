@@ -3,7 +3,7 @@
 
 #Deploy
 
-https://624b74ab2938b031f4791683--rick-and-morty-by-zuri.netlify.app/home
+ https://zagu5.github.io/Rick-and-Morty/
 
 
 # DEMO
